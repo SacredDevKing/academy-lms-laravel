@@ -18,6 +18,7 @@ return new class extends Migration
             // $table->integer("created_at")->nullable();
             $table->integer("expiry_date")->nullable();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

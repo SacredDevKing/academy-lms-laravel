@@ -19,6 +19,7 @@ return new class extends Migration
             $table->integer("date_added")->nullable();
             $table->integer("last_modified")->nullable();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
