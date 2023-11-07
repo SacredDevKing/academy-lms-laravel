@@ -27,3 +27,6 @@ Route::prefix("install")->group(function() {
     Route::get("/success", [InstallController::class, "success"]);
     Route::get("/finalizing_setup", [InstallController::class, "finializingSetup"]);
 });
+
+Route::prefix("frontend")->group(function() {
+});
