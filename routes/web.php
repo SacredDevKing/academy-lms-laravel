@@ -2,6 +2,9 @@
 
 use Illuminate\Support\Facades\Route;
 
+use App\Http\Controllers\WelcomeController;
+use App\Http\Controllers\InstallController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,6 +16,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::get("/", [WelcomeController::class, "index"]);
+
+Route::prefix("install")->group(function() {
+    Route::get("/step0", [InstallController::class, "step0"]);
+    Route::get("/step1", [InstallController::class, "step1"]);
+    Route::get("/step2", [InstallController::class, "step2"]);
+    Route::get("/step3", [InstallController::class, "step3"]);
+    Route::get("/step4", [InstallController::class, "step4"]);
+    Route::get("/success", [InstallController::class, "success"]);
+    Route::get("/finalizing_setup", [InstallController::class, "finializingSetup"]);
 });
