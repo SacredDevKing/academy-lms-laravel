@@ -1,35 +1,35 @@
-<?php
-$status_wise_courses = $this->crud_model->get_status_wise_courses();
-?>
+{{-- @php
+    $status_wise_courses = $this->crud_model->get_status_wise_courses();
+@endphp --}}
 <!-- ========== Left Sidebar Start ========== -->
 <div class="left-side-menu left-side-menu-detached">
 	<div class="leftbar-user">
 		<a href="javascript: void(0);">
-			<img src="<?php echo $this->user_model->get_user_image_url($this->session->userdata('user_id')); ?>" alt="user-image" height="42" class="rounded-circle shadow-sm">
-			<?php
-			$admin_details = $this->user_model->get_all_user($this->session->userdata('user_id'))->row_array();
-			?>
-			<span class="leftbar-user-name"><?php echo $admin_details['first_name'] . ' ' . $admin_details['last_name']; ?></span>
+			<img src="{{ $this->user_model->get_user_image_url($this->session->userdata('user_id')); }}" alt="user-image" height="42" class="rounded-circle shadow-sm">
+			{{-- @php
+			    $admin_details = $this->user_model->get_all_user($this->session->userdata('user_id'))->row_array();
+			@endphp --}}
+			<span class="leftbar-user-name">{{ $admin_details['first_name'] . ' ' . $admin_details['last_name']; }}</span>
 		</a>
 	</div>
 
 	<!--- Sidemenu -->
 	<ul class="metismenu side-nav side-nav-light">
 
-		<li class="side-nav-title side-nav-item"><?php echo get_phrase('navigation'); ?></li>
+		<li class="side-nav-title side-nav-item">{{ get_phrase('navigation'); }}</li>
 
-		<li class="side-nav-item <?php if ($page_name == 'dashboard') echo 'active'; ?>">
-			<a href="<?php echo site_url('admin/dashboard'); ?>" class="side-nav-link">
+		<li class="side-nav-item @php if ($page_name == 'dashboard') echo 'active'; @endphp">
+			<a href="{{ site_url('admin/dashboard'); }}" class="side-nav-link">
 				<i class="dripicons-view-apps"></i>
-				<span><?php echo get_phrase('dashboard'); ?></span>
+				<span>{{ get_phrase('dashboard'); }}</span>
 			</a>
 		</li>
 
-		<?php if (has_permission('course')) : ?>
-			<li class="side-nav-item <?php if ($page_name == 'courses' || $page_name == 'course_add' || $page_name == 'course_edit' || $page_name == 'categories' || $page_name == 'category_add' || $page_name == 'category_edit' || $page_name == 'coupons' || $page_name == 'coupon_add' || $page_name == 'coupon_edit' || $page_name == 'add_bundle' || $page_name == 'manage_course_bundle' || $page_name == 'edit_bundle' || $page_name == 'active_bundle_subscription_report' || $page_name == 'expire_bundle_subscription_report' || $page_name == 'bundle_invoice') echo 'active'; ?>">
-				<a href="javascript: void(0);" class="side-nav-link <?php if ($page_name == 'courses' || $page_name == 'course_add' || $page_name == 'course_edit' || $page_name == 'categories' || $page_name == 'category_add' || $page_name == 'category_edit' || $page_name == 'coupons' || $page_name == 'coupon_add' || $page_name == 'coupon_edit') : ?> active <?php endif; ?>">
+		@if (has_permission('course'))
+			<li class="side-nav-item @if ($page_name == 'courses' || $page_name == 'course_add' || $page_name == 'course_edit' || $page_name == 'categories' || $page_name == 'category_add' || $page_name == 'category_edit' || $page_name == 'coupons' || $page_name == 'coupon_add' || $page_name == 'coupon_edit' || $page_name == 'add_bundle' || $page_name == 'manage_course_bundle' || $page_name == 'edit_bundle' || $page_name == 'active_bundle_subscription_report' || $page_name == 'expire_bundle_subscription_report' || $page_name == 'bundle_invoice') echo 'active'; @endphp">
+				<a href="javascript: void(0);" class="side-nav-link @if ($page_name == 'courses' || $page_name == 'course_add' || $page_name == 'course_edit' || $page_name == 'categories' || $page_name == 'category_add' || $page_name == 'category_edit' || $page_name == 'coupons' || $page_name == 'coupon_add' || $page_name == 'coupon_edit') : ?> active @endif">
 					<i class="dripicons-archive"></i>
-					<span> <?php echo get_phrase('courses'); ?> </span>
+					<span> {{ get_phrase('courses'); }} </span>
 					<span class="menu-arrow"></span>
 				</a>
 				<ul class="side-nav-second-level" aria-expanded="false">
@@ -78,7 +78,7 @@ $status_wise_courses = $this->crud_model->get_status_wise_courses();
 					<?php endif; ?>
 				</ul>
 			</li>
-		<?php endif; ?>
+		@endif
 
 		<?php if (addon_status('tutor_booking')) : ?>
 			<li class="side-nav-item">

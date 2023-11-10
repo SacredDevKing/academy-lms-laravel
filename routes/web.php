@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\WelcomeController;
 use App\Http\Controllers\InstallController;
+use App\Http\Controllers\AdminController;
+use App\Http\Controllers\HomeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,6 +28,14 @@ Route::prefix("install")->group(function() {
     Route::get("/step4", [InstallController::class, "step4"]);
     Route::get("/success", [InstallController::class, "success"]);
     Route::get("/finalizing_setup", [InstallController::class, "finializingSetup"]);
+});
+
+Route::prefix("home")->group(function() {
+    Route::get("/", [HomeController::class, "index"]);
+});
+
+Route::prefix("admin")->group(function() {
+    Route::get("/dashboard", [AdminController::class, "dashboard"]);
 });
 
 Route::prefix("frontend")->group(function() {

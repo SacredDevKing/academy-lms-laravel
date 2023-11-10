@@ -13,6 +13,6 @@ class WelcomeController extends Controller
 
     public function index()
     {
-        return view("install.step0");
+        return redirect('install/step0');
     }
 }
